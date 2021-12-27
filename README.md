@@ -1,4 +1,4 @@
-# barbearia_project
+# Projeto Barbearia App
 
 A new Flutter project.
 
