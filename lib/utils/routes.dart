@@ -1,8 +1,9 @@
-import 'package:barbearia_project/screen/login_screen.dart';
-import 'package:barbearia_project/screen/splash_screen.dart';
+import 'package:barbearia_project/pages/login_page.dart';
+import 'package:barbearia_project/pages/sign_in_page.dart';
+import 'package:barbearia_project/pages/splash_page.dart';
 
 final routes = {
-  "/splash": (context) => SplashScreen(),
+  "/splash": (context) => SplashPage(),
   // "/home": (context) =>
   //     HomePage(
   //       user: ModalRoute
@@ -10,5 +11,6 @@ final routes = {
   //           .settings
   //           .arguments as UserModel,
   //     ),
-  "/login": (context) => LoginScreen(),
+  "/signIn": (context) => SignInPage(),
+  "/login": (context) => LoginPage(),
 };

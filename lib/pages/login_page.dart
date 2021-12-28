@@ -3,15 +3,16 @@ import 'package:barbearia_project/utils/colors.dart';
 import 'package:barbearia_project/widgets/google_login_button.dart';
 import 'package:barbearia_project/widgets/login_button.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class LoginScreen extends StatefulWidget {
-  LoginScreen({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  LoginPage({Key? key}) : super(key: key);
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginPageState extends State<LoginPage> {
   final controller = LoginController();
 
   @override
@@ -64,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     SocialLoginButton(
                       onTap: () {
-                        controller.googleSignIn(context);
+                        Get.toNamed("/signIn");
                       },
                     ),
                     const Padding(

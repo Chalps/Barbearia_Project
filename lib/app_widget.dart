@@ -1,4 +1,4 @@
-import 'package:barbearia_project/screen/splash_screen.dart';
+import 'package:barbearia_project/pages/splash_page.dart';
 import 'package:barbearia_project/utils/routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,11 +13,11 @@ class AppWidget extends StatelessWidget {
     return GetMaterialApp(
         title: 'The Barber',
         theme: ThemeData(
-            primarySwatch: Colors.indigo, primaryColor: kPrimaryColor),
-        // initialRoute: "/splash",
+            primarySwatch: myColour, primaryColor: kBackGroundColor),
+        initialRoute: "/splash",
         debugShowCheckedModeBanner: false,
         routes: routes,
-      home: SplashScreen(),
+      home: SplashPage(),
     );
   }
 }

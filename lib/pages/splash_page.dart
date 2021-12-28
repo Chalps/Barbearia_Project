@@ -4,17 +4,16 @@ import 'package:barbearia_project/controllers/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-import 'login_screen.dart';
+class SplashPage extends StatefulWidget {
+  const SplashPage({Key? key}) : super(key: key);
 
-class SplashScreen extends StatefulWidget {
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  _SplashPageState createState() => _SplashPageState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
-  _SplashScreenState() {
+class _SplashPageState extends State<SplashPage> {
+  _SplashPageState() {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitDown,
       DeviceOrientation.portraitUp,
@@ -22,7 +21,6 @@ class _SplashScreenState extends State<SplashScreen> {
   }
   @override
   Widget build(BuildContext context) {
-    Timer.periodic(Duration(seconds: 3), (Timer t) => Get.toNamed("/login"));
     final authController = AuthController();
     authController.currentUser(context);
     return Stack(
