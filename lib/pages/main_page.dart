@@ -65,7 +65,7 @@ class _MainPageState extends State<MainPage> {
                   children: [
                     SocialLoginButton(
                       onTap: () {
-                        Get.toNamed("/signIn");
+                        Get.toNamed("/login");
                       },
                     ),
                     const Padding(

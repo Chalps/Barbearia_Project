@@ -13,7 +13,7 @@ class AuthController {
       _user = user;
       Navigator.pushReplacementNamed(context, "/home", arguments: user);
     } else {
-      Navigator.pushReplacementNamed(context, "/login");
+      Navigator.pushReplacementNamed(context, "/main");
     }
   }
 
