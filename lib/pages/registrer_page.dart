@@ -3,9 +3,31 @@ import 'package:barbearia_project/widgets/logar_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class SignInPage extends StatelessWidget {
-  const SignInPage({Key? key}) : super(key: key);
+
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({Key? key}) : super(key: key);
+
+  @override
+  _RegisterPageState createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
+
+  String ?_email;
+  String ?_password;
+
+  Future<void> _createUser() async{
+    try{
+      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _email!, password: _password!);
+      print(userCredential);
+    } on FirebaseAuthException catch (e){
+      print("Error: $e");
+    }catch(e){
+      print("Error: $e");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +41,7 @@ class SignInPage extends StatelessWidget {
             SizedBox(
               height: size.height * 0.5,
               child: Image.asset(
-                "assets/images/sign_in.png",
+                "assets/images/register_photo.png",
                 fit: BoxFit.fitHeight,
               ),
             ),
@@ -44,7 +66,7 @@ class SignInPage extends StatelessWidget {
                 Padding(padding: EdgeInsets.only(top:100)),
                 Text.rich(
                   const TextSpan(
-                    text: "Bem-Vindo de Volta\n ",
+                    text: "Bem-Vindo\n ",
                     children: [
                       TextSpan(
                         text: '#',
@@ -56,7 +78,7 @@ class SignInPage extends StatelessWidget {
                       TextSpan(
                         text: 'TheBarber',
                         style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
+                            fontSize: 20),
                       ),
                     ],
                   ),
@@ -72,6 +94,7 @@ class SignInPage extends StatelessWidget {
                   child: Column(
                     children: [
                       TextFormField(
+                        style: TextStyle(color: kTextColor),
                         decoration: InputDecoration(
                           hintText: "Email",
                           labelText: "Email",
@@ -84,12 +107,19 @@ class SignInPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(8),
                           ),
                           prefixIcon:
-                              Icon(Icons.email_rounded, color: kTextColor),
+                          Icon(Icons.email_rounded, color: kTextColor),
                         ),
+                        onChanged: (value){
+                          _email = value;
+                        },
                       ),
                       Padding(
                           padding: EdgeInsets.only(bottom: kDefaultPadding)),
                       TextFormField(
+                        obscureText: true,
+                        enableSuggestions: false,
+                        autocorrect: false,
+                        style: TextStyle(color: kTextColor),
                         decoration: InputDecoration(
                           hintText: "Senha",
                           labelText: "Senha",
@@ -102,15 +132,19 @@ class SignInPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(8),
                           ),
                           prefixIcon:
-                              Icon(Icons.lock_rounded, color: kTextColor),
+                          Icon(Icons.lock_rounded, color: kTextColor),
                         ),
+                        onChanged: (value){
+                          _password = value;
+                        },
                       ),
                       const Padding(
                         padding: EdgeInsets.only(bottom: kDefaultPadding),
                       ),
                       LogarButton(
+                        name: "Cardastrar",
                         onTap: () {
-                          Get.toNamed("/signIn");
+                          _createUser();
                         },
                       ),
                     ],

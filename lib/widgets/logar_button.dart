@@ -4,8 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 
 class LogarButton extends StatelessWidget {
   final dynamic onTap;
+  final String name;
 
-  const LogarButton({Key? key, required this.onTap}) : super(key: key);
+  const LogarButton({Key? key, required this.onTap, required this.name}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class LogarButton extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "Login",
+                name,
                 style: GoogleFonts.playfairDisplay(
                   fontSize: 22,
                   fontWeight: FontWeight.w700,
