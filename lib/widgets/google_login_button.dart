@@ -1,10 +1,11 @@
+import 'package:barbearia_project/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SocialLoginButton extends StatelessWidget {
+class GoogleLoginButton extends StatelessWidget {
   final VoidCallback onTap;
 
-  const SocialLoginButton({Key? key, required this.onTap}) : super(key: key);
+  const GoogleLoginButton({Key? key, required this.onTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,44 +14,23 @@ class SocialLoginButton extends StatelessWidget {
       child: Container(
         height: 56,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: kPrimaryColor,
           borderRadius: BorderRadius.circular(15),
         ),
-        child: Row(
-          children: [
-            Expanded(
-                flex: 1,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset("assets/images/google.png"),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    Container(
-                      height: 56,
-                      width: 1,
-                      color: Colors.white,
-                    )
-                  ],
-                )),
-            Expanded(
-              flex: 2,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    "Entrar com Google",
-                    style: GoogleFonts.poppins(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black,
-                    ),
-                  ),
-                ],
+        child: Expanded(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Entrar com Google",
+                style: GoogleFonts.playfairDisplay(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w800,
+                  color: Colors.black,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

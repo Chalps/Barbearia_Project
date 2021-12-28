@@ -1,9 +1,8 @@
 import 'package:barbearia_project/controllers/login_controller.dart';
 import 'package:barbearia_project/utils/colors.dart';
 import 'package:barbearia_project/widgets/google_login_button.dart';
+import 'package:barbearia_project/widgets/login_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -17,62 +16,65 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: kBackGroundColor,
       body: Stack(
         children: <Widget>[
-          // Positioned(
-          //   top: 100,
-          //   left: 0,
-          //   right: 0,
-          //   child: Image.asset(
-          //     "assets/img/oceanLogo.png",
-          //   ),
-          // ),
+          Positioned(
+            child: Image.asset(
+              "assets/images/chair_photo.jpg",
+              height: size.height / 1.2,
+              width: size.width,
+              fit: BoxFit.fill,
+            ),
+          ),
+          Container(
+            height: size.height,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
+                stops: [
+                  0.3,
+                  0.9
+                ],
+                colors: [
+                  kBackGroundColor,
+                  Colors.transparent,
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+            top: 50,
+            right: 0,
+            left: 0,
+            child: Image.asset(
+              "assets/images/logo_cut.png",
+            ),
+          ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
-                  padding: EdgeInsets.only(top: 300, left: 50, right: 50),
-                  child: Text.rich(
-                    TextSpan(
-                      text:
-                      "Monitorando nossas água para um futuro melhor.\n ",
-                      children: [
-                        TextSpan(
-                          text: '#',
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: kTextColor),
-                        ),
-                        const TextSpan(
-                          text: 'team',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        TextSpan(
-                          text: 'seas',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold,color: kTextColor),
-                        )
-                      ],
+                padding: const EdgeInsets.only(left: 40, right: 40, top: 530),
+                child: Column(
+                  children: [
+                    SocialLoginButton(
+                      onTap: () {
+                        controller.googleSignIn(context);
+                      },
                     ),
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.raleway(
-                      fontSize: 32,
-                      fontWeight: FontWeight.w500,
-                      color: kTextColor,
+                    const Padding(
+                        padding: EdgeInsets.only(bottom: kDefaultPadding)),
+                    GoogleLoginButton(
+                      onTap: () {
+                        controller.googleSignIn(context);
+                      },
                     ),
-                  )),
-              Padding(
-                padding:
-                const EdgeInsets.only(left: 40, right: 40, top: 160),
-                child: SocialLoginButton(
-                  onTap: () {
-                    controller.googleSignIn(context);
-                  },
+                  ],
                 ),
               )
             ],
