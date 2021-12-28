@@ -22,7 +22,7 @@ class GoogleLoginButton extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "Entrar com Google",
+                "Entrar com Googlea",
                 style: GoogleFonts.playfairDisplay(
                   fontSize: 22,
                   fontWeight: FontWeight.w800,
