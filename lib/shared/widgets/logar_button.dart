@@ -1,11 +1,12 @@
-import 'package:barbearia_project/utils/colors.dart';
+import 'package:barbearia_project/shared/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SocialLoginButton extends StatelessWidget {
+class LogarButton extends StatelessWidget {
   final dynamic onTap;
+  final String name;
 
-  const SocialLoginButton({Key? key, required this.onTap}) : super(key: key);
+  const LogarButton({Key? key, required this.onTap, required this.name}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class SocialLoginButton extends StatelessWidget {
       child: Container(
         height: 56,
         decoration: BoxDecoration(
-          color: kBackGroundColor,
+          color: kPrimaryColor,
           borderRadius: BorderRadius.circular(15),
           border: Border.all(color: Colors.white.withOpacity(0.1)),
         ),
@@ -23,11 +24,11 @@ class SocialLoginButton extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "Login",
+                name,
                 style: GoogleFonts.playfairDisplay(
                   fontSize: 22,
                   fontWeight: FontWeight.w700,
-                  color: kTextColor,
+                  color: kBackGroundColor,
                 ),
               ),
             ],

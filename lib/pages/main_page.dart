@@ -1,7 +1,6 @@
 import 'package:barbearia_project/controllers/login_controller.dart';
-import 'package:barbearia_project/utils/colors.dart';
-import 'package:barbearia_project/widgets/google_login_button.dart';
-import 'package:barbearia_project/widgets/social_login_button.dart';
+import 'package:barbearia_project/shared/utils/colors.dart';
+import 'package:barbearia_project/shared/widgets/social_login_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -61,13 +60,15 @@ class _MainPageState extends State<MainPage> {
                 child: Column(
                   children: [
                     SocialLoginButton(
+                      name: "Login",
                       onTap: () {
                         Get.toNamed("/login");
                       },
                     ),
                     const Padding(
                         padding: EdgeInsets.only(bottom: kDefaultPadding)),
-                    GoogleLoginButton(
+                    SocialLoginButton(
+                      name: "Entrar com Google",
                       onTap: () {
                         controller.googleSignIn(context);
                       },

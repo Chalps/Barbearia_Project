@@ -1,9 +1,9 @@
-import 'package:barbearia_project/pages/splash_page.dart';
-import 'package:barbearia_project/utils/routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'utils/colors.dart';
+
+import 'shared/utils/colors.dart';
+import 'shared/utils/routes.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
