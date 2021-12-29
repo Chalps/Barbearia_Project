@@ -60,6 +60,8 @@ class _MainPageState extends State<MainPage> {
                 child: Column(
                   children: [
                     SocialLoginButton(
+                      textCor: kTextColor,
+                      cor: kBackGroundColor,
                       name: "Login",
                       onTap: () {
                         Get.toNamed("/login");
@@ -68,6 +70,8 @@ class _MainPageState extends State<MainPage> {
                     const Padding(
                         padding: EdgeInsets.only(bottom: kDefaultPadding)),
                     SocialLoginButton(
+                      textCor: Colors.black,
+                      cor: kPrimaryColor,
                       name: "Entrar com Google",
                       onTap: () {
                         controller.googleSignIn(context);
