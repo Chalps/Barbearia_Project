@@ -1,5 +1,5 @@
 import 'package:barbearia_project/model/user_model.dart';
-import 'package:barbearia_project/shared/utils/colors.dart';
+import 'package:barbearia_project/modules/shared/utils/colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

@@ -1,6 +1,6 @@
 import 'package:barbearia_project/controllers/login_controller.dart';
-import 'package:barbearia_project/shared/utils/colors.dart';
-import 'package:barbearia_project/shared/widgets/logar_button.dart';
+import 'package:barbearia_project/modules/shared/utils/colors.dart';
+import 'package:barbearia_project/modules/shared/widgets/logar_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';

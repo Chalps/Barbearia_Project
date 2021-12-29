@@ -2,9 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'shared/utils/colors.dart';
-import 'shared/utils/routes.dart';
-
+import 'modules/shared/utils/colors.dart';
+import 'modules/shared/utils/routes.dart';
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
 
