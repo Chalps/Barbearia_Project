@@ -36,9 +36,8 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(
           "The Barber",
-          style: GoogleFonts.playfairDisplay(
+          style: GoogleFonts.lobster(
             fontSize: 26,
-            fontWeight: FontWeight.bold,
             color: kPrimaryColor,
           ),
         ),
@@ -80,7 +79,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Container(
-            padding: const EdgeInsets.all(25),
+            padding: const EdgeInsets.all(30),
             margin: const EdgeInsets.all(30),
             child: Text.rich(
               TextSpan(
@@ -89,7 +88,7 @@ class _HomePageState extends State<HomePage> {
                   TextSpan(
                     text:
                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ante orci, cursus eleifend mi ac, mattis lobortis sem. Vivamus a condimentum erat. Proin laoreet non quam vitae luctus. Sed mi risus, consectetur a ullamcorper id, consequat in ante. ',
-                    style: TextStyle(
+                    style: GoogleFonts.roboto(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
                         color: kTextColor),
@@ -118,7 +117,7 @@ class _HomePageState extends State<HomePage> {
             child: InkWell(
               child: Text(
                 "Agendar",
-                style: GoogleFonts.playfairDisplay(
+                style: GoogleFonts.lobster(
                   fontSize: 30,
                   fontWeight: FontWeight.w900,
                 ),

@@ -66,19 +66,19 @@ class _LoginPageState extends State<LoginPage> {
                 child: Align(
                   alignment: Alignment.center,
                   child: Text.rich(
-                    const TextSpan(
+                    TextSpan(
                       text: "Bem-Vindo de Volta\n ",
                       children: [
                         TextSpan(
                           text: '#',
-                          style: TextStyle(
+                          style: GoogleFonts.lobster(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
                               color: kPrimaryColor),
                         ),
                         TextSpan(
                           text: 'TheBarber',
-                          style: TextStyle(fontSize: 20),
+                          style: GoogleFonts.lobster(fontSize: 20),
                         ),
                       ],
                     ),

@@ -27,7 +27,8 @@ class _RegisterPageState extends State<RegisterPage> {
             .createUserWithEmailAndPassword(
                 email: _email!, password: _password!);
         User? user = userCredential.user;
-        user!.updateProfile(displayName: _username, photoURL: "https://filestore.community.support.microsoft.com/api/images/6061bd47-2818-4f2b-b04a-5a9ddb6f6467?upload=true");
+        user!.updatePhotoURL("https://filestore.community.support.microsoft.com/api/images/6061bd47-2818-4f2b-b04a-5a9ddb6f6467?upload=true");
+        user.updateDisplayName(_username);
         Get.toNamed("/login");
         print(userCredential);
       } on FirebaseAuthException catch (e) {
@@ -77,19 +78,19 @@ class _RegisterPageState extends State<RegisterPage> {
                   child: Padding(
                     padding: const EdgeInsets.only(top:50.0),
                     child: Text.rich(
-                      const TextSpan(
+                      TextSpan(
                         text: "Bem-Vindo\n ",
                         children: [
                           TextSpan(
                             text: '#',
-                            style: TextStyle(
+                            style: GoogleFonts.lobster(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
                                 color: kPrimaryColor),
                           ),
                           TextSpan(
                             text: 'TheBarber',
-                            style: TextStyle(fontSize: 20),
+                            style: GoogleFonts.lobster(fontSize: 20),
                           ),
                         ],
                       ),
