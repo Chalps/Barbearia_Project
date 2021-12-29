@@ -134,7 +134,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               _username = value;
                             },
                             validator: (value) =>
-                                value!.isEmpty ? 'Nome cannot be blank' : null,
+                                value!.isEmpty ? 'Nome não pode estar vazio' : null,
                             onSaved: (value) => _username = value,
                           ),
                           const Padding(
@@ -159,7 +159,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               _email = value;
                             },
                             validator: (value) =>
-                                value!.isEmpty ? 'Email cannot be blank' : null,
+                                value!.isEmpty ? 'Email não pode estar vazio' : null,
                             onSaved: (value) => _email = value,
                           ),
                           const Padding(
@@ -188,7 +188,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               _password = value;
                             },
                             validator: (value) => value!.isEmpty
-                                ? 'Password cannot be blank'
+                                ? 'Password não pode estar vazio'
                                 : null,
                             onSaved: (value) => _password = value,
                           ),

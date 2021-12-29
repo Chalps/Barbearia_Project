@@ -51,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
               gradient: LinearGradient(
                 begin: Alignment.bottomCenter,
                 end: Alignment.topCenter,
-                stops: [0.47, 0.8],
+                stops: const [0.47, 0.8],
                 colors: [
                   kBackGroundColor,
                   Colors.transparent,
@@ -123,7 +123,7 @@ class _LoginPageState extends State<LoginPage> {
                             _email = value;
                           },
                           validator: (value) =>
-                              value!.isEmpty ? 'Email cannot be blank' : null,
+                              value!.isEmpty ? 'Email não pode estar vazio' : null,
                           onSaved: (value) => _email = value,
                         ),
                         const Padding(
@@ -151,7 +151,7 @@ class _LoginPageState extends State<LoginPage> {
                             _password = value;
                           },
                           validator: (value) =>
-                              value!.isEmpty ? 'Password cannot be blank' : null,
+                              value!.isEmpty ? 'Password não pode estar vazio' : null,
                           onSaved: (value) => _password = value,
                         ),
                         const Padding(
