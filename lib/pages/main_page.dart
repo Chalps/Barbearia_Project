@@ -36,10 +36,7 @@ class _MainPageState extends State<MainPage> {
               gradient: LinearGradient(
                 begin: Alignment.bottomCenter,
                 end: Alignment.topCenter,
-                stops: [
-                  0.3,
-                  0.9
-                ],
+                stops: const [0.3, 0.9],
                 colors: [
                   kBackGroundColor,
                   Colors.transparent,

@@ -1,3 +1,5 @@
+import 'package:barbearia_project/controllers/login_controller.dart';
+import 'package:barbearia_project/model/user_model.dart';
 import 'package:barbearia_project/utils/colors.dart';
 import 'package:barbearia_project/widgets/logar_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -14,28 +16,16 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   String? _email;
   String? _password;
+
+  final controller = LoginController();
 
   Future<void> _loginUser() async {
     final FormState? form = _formKey.currentState;
     if (form!.validate()) {
-      try {
-        UserCredential userCredential =
-            await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: _email!,
-          password: _password!,
-        );
-        if (userCredential != null) {
-          Get.toNamed("/home");
-        }
-      } on FirebaseAuthException catch (e) {
-        if (e.code == 'user-not-found') {
-          print('No user found for that email.');
-        } else if (e.code == 'wrong-password') {
-          print('Wrong password provided for that user.');
-        }
-      }
+      controller.firebaseAuthSignIn(context, _email, _password);
     } else {
       print('Form is invalid');
     }

@@ -15,6 +15,7 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  String? _username;
   String? _email;
   String? _password;
 
@@ -25,6 +26,9 @@ class _RegisterPageState extends State<RegisterPage> {
         UserCredential userCredential = await FirebaseAuth.instance
             .createUserWithEmailAndPassword(
                 email: _email!, password: _password!);
+        User? user = userCredential.user;
+        user!.updateProfile(displayName: _username, photoURL: "https://filestore.community.support.microsoft.com/api/images/6061bd47-2818-4f2b-b04a-5a9ddb6f6467?upload=true");
+        Get.toNamed("/login");
         print(userCredential);
       } on FirebaseAuthException catch (e) {
         print("Error: $e");
@@ -74,7 +78,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     padding: const EdgeInsets.only(top:50.0),
                     child: Text.rich(
                       const TextSpan(
-                        text: "Bem-Vindo de Volta\n ",
+                        text: "Bem-Vindo\n ",
                         children: [
                           TextSpan(
                             text: '#',
@@ -127,11 +131,11 @@ class _RegisterPageState extends State<RegisterPage> {
                                   Icon(Icons.email_rounded, color: kTextColor),
                             ),
                             onChanged: (value) {
-                              _email = value;
+                              _username = value;
                             },
                             validator: (value) =>
                                 value!.isEmpty ? 'Nome cannot be blank' : null,
-                            onSaved: (value) => _email = value,
+                            onSaved: (value) => _username = value,
                           ),
                           const Padding(
                               padding: EdgeInsets.only(bottom: kDefaultPadding)),

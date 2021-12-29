@@ -13,11 +13,10 @@ class AppWidget extends StatelessWidget {
     return GetMaterialApp(
         title: 'The Barber',
         theme: ThemeData(
-            primarySwatch: myColour, primaryColor: kBackGroundColor),
+            primarySwatch: myColour, primaryColor: kPrimaryColor, canvasColor: kBackGroundColor),
         initialRoute: "/splash",
         debugShowCheckedModeBanner: false,
         routes: routes,
-      home: SplashPage(),
     );
   }
 }
