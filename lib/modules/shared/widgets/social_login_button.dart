@@ -24,9 +24,9 @@ class SocialLoginButton extends StatelessWidget {
             children: [
               Text(
                 "Login",
-                style: GoogleFonts.lobster(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w500,
+                style: GoogleFonts.playfairDisplay(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w600,
                   color: kTextColor,
                 ),
               ),

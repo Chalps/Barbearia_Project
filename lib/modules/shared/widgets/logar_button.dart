@@ -27,8 +27,8 @@ class LogarButton extends StatelessWidget {
               Text(
                 name,
                 style: GoogleFonts.lobster(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w700,
+                  fontSize: 26,
+                  fontWeight: FontWeight.w500,
                   color: kBackGroundColor,
                 ),
               ),

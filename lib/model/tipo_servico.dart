@@ -1,0 +1,4 @@
+enum TipoServico{
+  BARBEARIA,
+  DEPILACAO
+}

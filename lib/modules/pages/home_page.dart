@@ -88,10 +88,10 @@ class _HomePageState extends State<HomePage> {
                   TextSpan(
                     text:
                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ante orci, cursus eleifend mi ac, mattis lobortis sem. Vivamus a condimentum erat. Proin laoreet non quam vitae luctus. Sed mi risus, consectetur a ullamcorper id, consequat in ante. ',
-                    style: GoogleFonts.roboto(
+                    style: GoogleFonts.robotoSlab(
                         fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: kTextColor),
+                        fontWeight: FontWeight.w600,
+                        color: kSTextColor),
                   ),
                 ],
                 style: GoogleFonts.playfairDisplay(
@@ -122,6 +122,7 @@ class _HomePageState extends State<HomePage> {
                   fontWeight: FontWeight.w900,
                 ),
               ),
+              onTap: () => Get.toNamed("/seleccion"),
             ),
           )
         ],
@@ -133,11 +134,8 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 170,
               child: DrawerHeader(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: kPrimaryColor,
-                  borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(10),
-                      bottomLeft: Radius.circular(10)),
                 ),
                 child: ListTile(
                   title: Text.rich(
@@ -155,6 +153,7 @@ class _HomePageState extends State<HomePage> {
                           )
                         ]),
                   ),
+                  subtitle: Text("${widget.user!.email}", style: const TextStyle(fontSize: 12),),
                   trailing: Container(
                     height: 48,
                     width: 48,
@@ -169,7 +168,7 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               title: Text('Início',
-                  style: TextStyle(color: kTextColor),
+                  style: GoogleFonts.lobster(color: kTextColor, fontSize: 20),
                   textAlign: TextAlign.center),
               onTap: () {
                 Get.toNamed("/home");
@@ -178,7 +177,7 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               title: Text('Agendamento',
-                  style: TextStyle(color: kTextColor),
+                  style: GoogleFonts.lobster(color: kTextColor, fontSize: 20),
                   textAlign: TextAlign.center),
               onTap: () {
                 Get.toNamed("/agendamento");
@@ -186,7 +185,7 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               title: Text('Atendimentos',
-                  style: TextStyle(color: kTextColor),
+                  style: GoogleFonts.lobster(color: kTextColor, fontSize: 20),
                   textAlign: TextAlign.center),
               onTap: () {
                 Get.toNamed("/atendimento");
@@ -194,7 +193,7 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               title: Text('Compartilhar',
-                  style: TextStyle(color: kTextColor),
+                  style: GoogleFonts.lobster(color: kTextColor, fontSize: 20),
                   textAlign: TextAlign.center),
               onTap: () {
                 // Update the state of the app

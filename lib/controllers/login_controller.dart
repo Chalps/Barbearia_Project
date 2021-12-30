@@ -1,7 +1,6 @@
 import 'package:barbearia_project/model/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import 'auth_controller.dart';
@@ -16,16 +15,10 @@ class LoginController {
     );
     try {
       final response = await _googleSignIn.signIn();
-      if (response == null){
-        final user = UserModel(
-          name: FirebaseAuth.instance.currentUser!.displayName,
-          photoURL: FirebaseAuth.instance.currentUser!.displayName,
-        );
-        authController.setUser(context, user);
-      }
       print(response);
       final user = UserModel(
         name: response!.displayName!,
+        email: response.email,
         photoURL: response.photoUrl,
       );
       authController.setUser(context, user);
@@ -44,6 +37,7 @@ class LoginController {
       );
       final user = UserModel(
         name: userCredential.user!.displayName,
+        email: userCredential.user!.email,
         photoURL: userCredential.user!.photoURL
       );
       authController.setUser(context, user);
