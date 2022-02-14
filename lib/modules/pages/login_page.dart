@@ -35,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       backgroundColor: kBackGroundColor,
       body: Stack(
-        children: <Widget>[
+        children: [
           SizedBox(
             height: size.height * 0.55,
             child: Image.asset(
@@ -58,13 +58,11 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             mainAxisSize: MainAxisSize.max,
             children: [
-              Expanded(
-                flex: 1,
-                child: Align(
-                  alignment: Alignment.center,
+                Padding(
+                  padding: const EdgeInsets.only(top: 100),
                   child: Text.rich(
                     TextSpan(
                       text: "Bem-Vindo de Volta\n ",
@@ -90,13 +88,12 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-              ),
-              Expanded(
-                flex: 0,
-                child: Form(
+              // Divider(height: size.height *0.2,thickness: 20,color: kRedColor),
+              Form(
                   key: _formKey,
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 40.0, right: 40.0, bottom: 70),
+                    padding: const EdgeInsets.only(
+                        left: 40.0, right: 40.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -108,11 +105,12 @@ class _LoginPageState extends State<LoginPage> {
                             labelText: "Email",
                             labelStyle: TextStyle(color: kTextColor),
                             hintStyle: TextStyle(color: kTextColor),
-                            enabledBorder: const OutlineInputBorder(
+                            enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.white38),
+                              borderRadius: BorderRadius.circular(15),
                             ),
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(15),
                             ),
                             prefixIcon:
                                 Icon(Icons.email_rounded, color: kTextColor),
@@ -120,8 +118,9 @@ class _LoginPageState extends State<LoginPage> {
                           onChanged: (value) {
                             _email = value;
                           },
-                          validator: (value) =>
-                              value!.isEmpty ? 'Email não pode estar vazio' : null,
+                          validator: (value) => value!.isEmpty
+                              ? 'Email não pode estar vazio'
+                              : null,
                           onSaved: (value) => _email = value,
                         ),
                         const Padding(
@@ -136,11 +135,12 @@ class _LoginPageState extends State<LoginPage> {
                             labelText: "Senha",
                             hintStyle: TextStyle(color: kTextColor),
                             labelStyle: TextStyle(color: kTextColor),
-                            enabledBorder: const OutlineInputBorder(
+                            enabledBorder: OutlineInputBorder(
                               borderSide: const BorderSide(color: Colors.white38),
+                              borderRadius: BorderRadius.circular(15),
                             ),
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(15),
                             ),
                             prefixIcon:
                                 Icon(Icons.lock_rounded, color: kTextColor),
@@ -148,8 +148,9 @@ class _LoginPageState extends State<LoginPage> {
                           onChanged: (value) {
                             _password = value;
                           },
-                          validator: (value) =>
-                              value!.isEmpty ? 'Password não pode estar vazio' : null,
+                          validator: (value) => value!.isEmpty
+                              ? 'Password não pode estar vazio'
+                              : null,
                           onSaved: (value) => _password = value,
                         ),
                         const Padding(
@@ -185,16 +186,18 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                             InkWell(
-                                child: const Text('Cadastre-se', style: TextStyle(color: kPrimaryColor, fontSize: 14),),
-                                onTap: () => Get.toNamed("/register")
-                            ),
+                                child: const Text(
+                                  'Cadastre-se',
+                                  style: TextStyle(
+                                      color: kPrimaryColor, fontSize: 14),
+                                ),
+                                onTap: () => Get.toNamed("/register")),
                           ],
                         ),
                       ],
                     ),
                   ),
                 ),
-              ),
             ],
           ),
         ],

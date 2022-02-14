@@ -22,15 +22,15 @@ class GoogleLoginButton extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset("assets/images/google.png",width: 25),
-              SizedBox(
-                width: 16,
-              ),
+              // Image.asset("assets/images/google.png",width: 25),
+              // SizedBox(
+              //   width: 16,
+              // ),
               Text(
                 "Entrar com Google",
-                style: GoogleFonts.cabin(
+                style: GoogleFonts.notoSerif(
                   fontSize: 22,
-                  fontWeight: FontWeight.w500,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             ],

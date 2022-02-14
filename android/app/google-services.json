@@ -14,11 +14,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "948700532671-eua7uc4n9lsqq6dskt7u8t9dise6fh43.apps.googleusercontent.com",
+          "client_id": "948700532671-rjang8ljl6m4aq54ueonc8s2bp0jg0af.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.barbearia_project",
-            "certificate_hash": "f0f5c236bfa7562c0d68d00a755bd0b9264fcff2"
+            "certificate_hash": "ee418ee70dee52c3a0937eb119cf73b8e2bf9475"
           }
         },
         {

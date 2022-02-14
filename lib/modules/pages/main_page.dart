@@ -36,7 +36,7 @@ class _MainPageState extends State<MainPage> {
               gradient: LinearGradient(
                 begin: Alignment.bottomCenter,
                 end: Alignment.topCenter,
-                stops: const [0.3, 0.9],
+                stops: const [0.33, 0.9],
                 colors: [
                   kBackGroundColor,
                   Colors.transparent,
@@ -45,19 +45,14 @@ class _MainPageState extends State<MainPage> {
             ),
           ),
           Positioned(
-            top: 50,
-            right: 0,
-            left: 0,
             child: Image.asset(
-              "assets/images/logo_cut.png",
+              "assets/images/logo_cut.png",fit: BoxFit.fitWidth,
             ),
           ),
           Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 40, right: 40, top: 530),
+                padding: const EdgeInsets.only(left: 40, right: 40, top: 550),
                 child: Column(
                   children: [
                     SocialLoginButton(

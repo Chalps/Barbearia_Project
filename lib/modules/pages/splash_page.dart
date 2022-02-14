@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
+import '../shared/utils/colors.dart';
+import '../shared/utils/colors.dart';
+
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
 
@@ -51,9 +54,9 @@ class _SplashPageState extends State<SplashPage> {
                 flex: 1,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    CircularProgressIndicator(color: Colors.white,),
-                    const Padding(
+                  children: const <Widget>[
+                    CircularProgressIndicator(color: kPrimaryColor),
+                    Padding(
                       padding: EdgeInsets.only(top: 10.0),
                     ),
                   ],
