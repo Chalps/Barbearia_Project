@@ -10,10 +10,6 @@ import 'package:barbearia_project/modules/pages/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-UserModel? _user;
-
-UserModel? get user => _user;
-
 final routes = [
   GetPage(name: "/splash", page: () => SplashPage()),
   GetPage(name: "/home", page: () => HomePage()),
@@ -23,11 +19,14 @@ final routes = [
   GetPage(name: "/agendamento", page: () => AgendamentoPage()),
   GetPage(name: "/atendimento", page: () => AtendimentoPage()),
   GetPage(name: "/seleccion", page: () => SelectionPage()),
-  // "/home": (context) =>
-  //     HomePage(
-  //       user: ModalRoute
-  //           .of(context)!
-  //           .settings
-  //           .arguments as UserModel,
-  //     ),
 ];
+
+final homeRoute = {
+  "/home": (context) =>
+      HomePage(
+        user: ModalRoute
+            .of(context)!
+            .settings
+            .arguments as UserModel,
+      ),
+};

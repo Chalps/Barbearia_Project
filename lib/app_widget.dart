@@ -16,6 +16,7 @@ class AppWidget extends StatelessWidget {
         initialRoute: "/splash",
         debugShowCheckedModeBanner: false,
         getPages: routes,
+      routes: homeRoute,
     );
   }
 }
