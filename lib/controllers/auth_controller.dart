@@ -1,5 +1,6 @@
 import 'package:barbearia_project/model/user_model.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthController {
@@ -11,9 +12,14 @@ class AuthController {
     if (user != null) {
       saveUser(user);
       _user = user;
-      Navigator.pushReplacementNamed(context, "/home", arguments: user);
+      // Navigator.pushReplacementNamed(context, "/home", arguments: user);
+      // Get.toNamed("/home", arguments: {user: ModalRoute
+      //     .of(context)!
+      //     .settings
+      //     .arguments as UserModel});
+      Get.toNamed("/splash");
     } else {
-      Navigator.pushReplacementNamed(context, "/main");
+      Get.toNamed("/splash");
     }
   }
 

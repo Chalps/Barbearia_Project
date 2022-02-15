@@ -106,22 +106,22 @@ class _HomePageState extends State<HomePage> {
               borderRadius: BorderRadius.circular(15),
             ),
           ),
-          Container(
-            alignment: Alignment.center,
-            width: size.width,
-            height: size.height * 0.103,
-            color: kPrimaryColor,
-            child: InkWell(
-              child: Text(
-                "Agendar",
-                style: GoogleFonts.lobster(
-                  fontSize: 30,
-                  fontWeight: FontWeight.w900,
+          InkWell(
+              child: Container(
+                alignment: Alignment.center,
+                width: size.width,
+                height: size.height * 0.103,
+                color: kPrimaryColor,
+                child: Text(
+                  "Agendar",
+                  style: GoogleFonts.lobster(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w900,
+                  ),
                 ),
               ),
               onTap: () => Get.toNamed("/seleccion"),
             ),
-          )
         ],
       ),
       drawer: Drawer(
@@ -151,7 +151,7 @@ class _HomePageState extends State<HomePage> {
                               fontSize: 26, fontWeight: FontWeight.w500),
                           children: [
                             TextSpan(
-                              text: widget.user!.name,
+                              text: widget.user?.name,
                               style: GoogleFonts.playfairDisplay(
                                 fontSize: 26,
                                 fontWeight: FontWeight.w800,
@@ -160,7 +160,7 @@ class _HomePageState extends State<HomePage> {
                           ]),
                     ),
                     subtitle: Text(
-                      "${widget.user!.email}",
+                      "${widget.user?.email}",
                       style: const TextStyle(fontSize: 12),
                     ),
                     trailing: Container(
@@ -170,7 +170,7 @@ class _HomePageState extends State<HomePage> {
                           color: Colors.black,
                           borderRadius: BorderRadius.circular(10),
                           image: DecorationImage(
-                              image: NetworkImage(widget.user!.photoURL!))),
+                              image: NetworkImage(widget.user?.photoURL == null ? '' : widget.user!.photoURL!))),
                     ),
                   ),
                 ),
@@ -213,14 +213,14 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             InkWell(
-              onTap: () {
-                FirebaseAuth.instance.signOut();
-                googleSignIn.signOut();
+              onTap: () async {
+                await FirebaseAuth.instance.signOut();
+                await googleSignIn.signOut();
                 widget.user = null;
                 FirebaseAuth.instance.authStateChanges().listen((User? user) {
                   if (user == null) {
                     print('User is currently signed out!');
-                    Get.toNamed("/main");
+                    Get.offNamed("/main");
                   }
                 });
               },

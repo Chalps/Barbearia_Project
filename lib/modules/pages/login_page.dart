@@ -88,7 +88,6 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-              // Divider(height: size.height *0.2,thickness: 20,color: kRedColor),
               Form(
                   key: _formKey,
                   child: Padding(
@@ -149,7 +148,7 @@ class _LoginPageState extends State<LoginPage> {
                             _password = value;
                           },
                           validator: (value) => value!.isEmpty
-                              ? 'Password não pode estar vazio'
+                              ? 'Senha não pode estar vazio'
                               : null,
                           onSaved: (value) => _password = value,
                         ),

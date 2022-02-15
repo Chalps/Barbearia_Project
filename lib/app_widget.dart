@@ -15,7 +15,7 @@ class AppWidget extends StatelessWidget {
             primarySwatch: myColour, primaryColor: kPrimaryColor, canvasColor: kBackGroundColor),
         initialRoute: "/splash",
         debugShowCheckedModeBanner: false,
-        routes: routes,
+        getPages: routes,
     );
   }
 }
