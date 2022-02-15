@@ -1,3 +1,4 @@
+import 'package:barbearia_project/modules/pages/splash_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -33,13 +34,9 @@ class _AppFirebaseState extends State<AppFirebase> {
               ),
             );
           } else if (snapshot.connectionState == ConnectionState.done) {
-            return AppWidget();
+            return const AppWidget();
           } else {
-            return const Material(
-              child: Center(
-                child: CircularProgressIndicator(),
-              ),
-            );
+            return const SplashPage();
           }
         });
   }

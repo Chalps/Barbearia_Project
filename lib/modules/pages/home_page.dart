@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:barbearia_project/model/user_model.dart';
 import 'package:barbearia_project/modules/shared/utils/colors.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -24,12 +26,32 @@ class _HomePageState extends State<HomePage> {
     "assets/images/item4.jpg",
   ];
 
+  bool? signOutMethod(){
+    try {
+      FirebaseAuth.instance.signOut();
+      googleSignIn.signOut();
+      widget.user = null;
+      FirebaseAuth.instance.authStateChanges().listen((User? user) {
+        if (user == null) {
+
+        }
+      });
+      return true;
+    }on Exception catch (e)
+    {
+      print("Error ao deslogar, erro: ${e}");
+      return false;
+    }
+  }
+
   final GoogleSignIn googleSignIn = GoogleSignIn();
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final size = MediaQuery
+        .of(context)
+        .size;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -57,7 +79,8 @@ class _HomePageState extends State<HomePage> {
                   autoPlay: true),
               items: imageList
                   .map(
-                    (e) => ClipRRect(
+                    (e) =>
+                    ClipRRect(
                       borderRadius: BorderRadius.circular(8),
                       child: Stack(
                         fit: StackFit.expand,
@@ -71,7 +94,7 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                     ),
-                  )
+              )
                   .toList(),
             ),
           ),
@@ -84,7 +107,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   TextSpan(
                     text:
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ante orci, cursus eleifend mi ac, mattis lobortis sem. Vivamus a condimentum erat. Proin laoreet non quam vitae luctus. Sed mi risus, consectetur a ullamcorper id, consequat in ante. ',
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ante orci, cursus eleifend mi ac, mattis lobortis sem. Vivamus a condimentum erat. Proin laoreet non quam vitae luctus. Sed mi risus, consectetur a ullamcorper id, consequat in ante. ',
                     style: GoogleFonts.robotoSlab(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
@@ -107,21 +130,21 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           InkWell(
-              child: Container(
-                alignment: Alignment.center,
-                width: size.width,
-                height: size.height * 0.103,
-                color: kPrimaryColor,
-                child: Text(
-                  "Agendar",
-                  style: GoogleFonts.lobster(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w900,
-                  ),
+            child: Container(
+              alignment: Alignment.center,
+              width: size.width,
+              height: size.height * 0.103,
+              color: kPrimaryColor,
+              child: Text(
+                "Agendar",
+                style: GoogleFonts.lobster(
+                  fontSize: 30,
+                  fontWeight: FontWeight.w900,
                 ),
               ),
-              onTap: () => Get.toNamed("/seleccion"),
             ),
+            onTap: () => Get.toNamed("/seleccion"),
+          ),
         ],
       ),
       drawer: Drawer(
@@ -139,7 +162,7 @@ class _HomePageState extends State<HomePage> {
                 decoration: BoxDecoration(
                   color: kPrimaryColor,
                   borderRadius:
-                      BorderRadius.only(topRight: Radius.circular(20)),
+                  BorderRadius.only(topRight: Radius.circular(20)),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(top: 16.0),
@@ -170,7 +193,9 @@ class _HomePageState extends State<HomePage> {
                           color: Colors.black,
                           borderRadius: BorderRadius.circular(10),
                           image: DecorationImage(
-                              image: NetworkImage(widget.user?.photoURL == null ? '' : widget.user!.photoURL!))),
+                              image: NetworkImage(
+                                  widget.user?.photoURL == null ? '' : widget
+                                      .user!.photoURL!))),
                     ),
                   ),
                 ),
@@ -178,7 +203,7 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               title: Text('Início',
-                  style: GoogleFonts.lobster(color: kTextColor, fontSize: 20),
+                  style: GoogleFonts.notoSerif(color: kTextColor, fontSize: 20),
                   textAlign: TextAlign.center),
               onTap: () {
                 Get.toNamed("/home");
@@ -187,7 +212,7 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               title: Text('Agendamento',
-                  style: GoogleFonts.lobster(color: kTextColor, fontSize: 20),
+                  style: GoogleFonts.notoSerif(color: kTextColor, fontSize: 20),
                   textAlign: TextAlign.center),
               onTap: () {
                 Get.toNamed("/agendamento");
@@ -195,7 +220,7 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               title: Text('Atendimentos',
-                  style: GoogleFonts.lobster(color: kTextColor, fontSize: 20),
+                  style: GoogleFonts.notoSerif(color: kTextColor, fontSize: 20),
                   textAlign: TextAlign.center),
               onTap: () {
                 Get.toNamed("/atendimento");
@@ -203,7 +228,7 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               title: Text('Compartilhar',
-                  style: GoogleFonts.lobster(color: kTextColor, fontSize: 20),
+                  style: GoogleFonts.notoSerif(color: kTextColor, fontSize: 20),
                   textAlign: TextAlign.center),
               onTap: () {
                 // Update the state of the app
@@ -214,15 +239,10 @@ class _HomePageState extends State<HomePage> {
             ),
             InkWell(
               onTap: () async {
-                await FirebaseAuth.instance.signOut();
-                await googleSignIn.signOut();
-                widget.user = null;
-                FirebaseAuth.instance.authStateChanges().listen((User? user) {
-                  if (user == null) {
-                    print('User is currently signed out!');
-                    Get.offNamed("/main");
-                  }
-                });
+                if(signOutMethod() == true){
+                  print('User is currently signed out!');
+                  Get.offNamed("/main");
+                }
               },
               child: Padding(
                 padding: EdgeInsets.only(
@@ -235,20 +255,20 @@ class _HomePageState extends State<HomePage> {
                     border: Border.all(color: Colors.white.withOpacity(0.1)),
                   ),
                   child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "LogOut",
-                          style: GoogleFonts.playfairDisplay(
-                              fontSize: 22,
-                              fontWeight: FontWeight.w600,
-                              color: kTextColor),
-                        ),
-                      ],
-                    ),
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "LogOut",
+                        style: GoogleFonts.notoSerif(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w600,
+                            color: kSBackGroundColor),
+                      ),
+                    ],
                   ),
                 ),
               ),
+            ),
           ],
         ),
       ),
