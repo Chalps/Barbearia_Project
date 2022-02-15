@@ -234,8 +234,7 @@ class _HomePageState extends State<HomePage> {
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(color: Colors.white.withOpacity(0.1)),
                   ),
-                  child: Expanded(
-                    child: Row(
+                  child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
@@ -250,7 +249,6 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-            )
           ],
         ),
       ),

@@ -18,8 +18,7 @@ class GoogleLoginButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
           border: Border.all(color: Colors.white.withOpacity(0.01)),
         ),
-        child: Expanded(
-          child: Row(
+        child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // Image.asset("assets/images/google.png",width: 25),
@@ -36,7 +35,6 @@ class GoogleLoginButton extends StatelessWidget {
             ],
           ),
         ),
-      ),
     );
   }
 }

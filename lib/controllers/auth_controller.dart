@@ -17,9 +17,9 @@ class AuthController {
       //     .of(context)!
       //     .settings
       //     .arguments as UserModel});
-      Get.toNamed("/splash");
+      Get.toNamed("/home");
     } else {
-      Get.toNamed("/splash");
+      Get.toNamed("/home");
     }
   }
 

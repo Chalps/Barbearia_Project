@@ -18,20 +18,18 @@ class SocialLoginButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
           border: Border.all(color: Colors.white.withOpacity(0.1)),
         ),
-        child: Expanded(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "Login",
-                style: GoogleFonts.notoSerif(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w600,
-                  color: kTextColor,
-                ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Login",
+              style: GoogleFonts.notoSerif(
+                fontSize: 24,
+                fontWeight: FontWeight.w600,
+                color: kTextColor,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
