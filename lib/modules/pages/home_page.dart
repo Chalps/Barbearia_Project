@@ -1,14 +1,11 @@
-import 'dart:math';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:social_share/social_share.dart';
-import 'package:url_launcher/link.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:barbearia_project/model/user_model.dart';
 import 'package:barbearia_project/modules/shared/utils/colors.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_social_content_share/flutter_social_content_share.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
