@@ -7,6 +7,7 @@ import 'auth_controller.dart';
 
 class LoginController {
   final authController = AuthController();
+
   Future<void> googleSignIn(BuildContext context) async {
     GoogleSignIn _googleSignIn = GoogleSignIn(
       scopes: [
@@ -15,7 +16,6 @@ class LoginController {
     );
     try {
       final response = await _googleSignIn.signIn();
-      print(response);
       final user = UserModel(
         name: response!.displayName,
         email: response.email,
@@ -27,18 +27,19 @@ class LoginController {
       print(error);
     }
   }
-  Future<void> firebaseAuthSignIn(BuildContext context, _email, _password) async {
+
+  Future<void> firebaseAuthSignIn(
+      BuildContext context, _email, _password) async {
     try {
       UserCredential userCredential =
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: _email!,
         password: _password!,
       );
       final user = UserModel(
-        name: userCredential.user!.displayName,
-        email: userCredential.user!.email,
-        photoURL: userCredential.user!.photoURL
-      );
+          name: userCredential.user!.displayName,
+          email: userCredential.user!.email,
+          photoURL: userCredential.user!.photoURL);
       authController.setUser(context, user);
       print(userCredential);
     } on FirebaseAuthException catch (e) {
@@ -51,5 +52,13 @@ class LoginController {
       authController.setUser(context, null);
       print(error);
     }
+  }
+
+  Future<void> googleSignOut(BuildContext context) async {
+    GoogleSignIn google = GoogleSignIn();
+    await FirebaseAuth.instance.signOut();
+    await google.signOut();
+    UserModel? user = UserModel();
+    authController.setUser(context, user);
   }
 }

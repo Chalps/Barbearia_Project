@@ -1,14 +1,13 @@
+import 'package:barbearia_project/controllers/login_controller.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:social_share/social_share.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:barbearia_project/model/user_model.dart';
 import 'package:barbearia_project/modules/shared/utils/colors.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 import '../shared/widgets/scrollable_page.dart';
 
@@ -28,8 +27,9 @@ class _HomePageState extends State<HomePage> {
     "assets/images/item3.png",
     "assets/images/item4.jpg",
   ];
-
   Future<void>? _launched;
+  final controller = PageController();
+  LoginController loginController = LoginController();
 
   var url = 'https://www.instagram.com/thebarberperdizesbarbearia/';
   var urlface = 'https://m.facebook.com/thebarberperdizes/';
@@ -45,28 +45,10 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  final controller = PageController();
-
-  bool? signOutMethod() {
-    try {
-      FirebaseAuth.instance.signOut();
-      googleSignIn.signOut();
-      widget.user = null;
-      FirebaseAuth.instance.authStateChanges().listen((User? user) {
-        if (user == null) {}
-      });
-      return true;
-    } on Exception catch (e) {
-      print("Error ao deslogar, erro: ${e}");
-      return false;
-    }
-  }
-
-  final GoogleSignIn googleSignIn = GoogleSignIn();
-  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-
   @override
   Widget build(BuildContext context) {
+    String? name = widget.user?.name;
+    name = name?.split(" ").first;
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -196,7 +178,7 @@ class _HomePageState extends State<HomePage> {
                                   fontSize: 26, fontWeight: FontWeight.w500),
                               children: [
                                 TextSpan(
-                                  text: widget.user?.name,
+                                  text: name,
                                   style: GoogleFonts.playfairDisplay(
                                     fontSize: 26,
                                     fontWeight: FontWeight.w800,
@@ -289,11 +271,8 @@ class _HomePageState extends State<HomePage> {
               alignment: Alignment.bottomCenter,
               child: InkWell(
                 onTap: () async {
-                  var response = await signOutMethod();
-                  if (response == true) {
-                    print('User is currently signed out!');
-                    Get.offNamed("/main");
-                  }
+                  await loginController.googleSignOut(context);
+                  Get.offNamed("/main");
                 },
                 autofocus: true,
                 child: Container(

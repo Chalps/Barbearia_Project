@@ -9,23 +9,22 @@ class AuthController {
   UserModel get user => _user!;
 
   void setUser(BuildContext context, UserModel? user) {
-    if (user != null) {
+    print(user);
+    if (user?.email != null) {
       saveUser(user);
       _user = user;
+
       Navigator.popAndPushNamed(context, "/home", arguments: user);
       // Navigator.pushReplacementNamed(context, "/home", arguments: user);
-      // Get.toNamed("/home", arguments: {user: ModalRoute
-      //     .of(context)!
-      //     .settings
-      //     .arguments as UserModel});
     } else {
-      Get.toNamed("/main");
+      saveUser(user);
+      Get.offNamed("/main");
     }
   }
 
-  Future<void> saveUser(UserModel user) async {
+  Future<void> saveUser(UserModel? user) async {
     final instance = await SharedPreferences.getInstance();
-    await instance.setString("user", user.toJson());
+    await instance.setString("user", user!.toJson());
     return;
   }
 
