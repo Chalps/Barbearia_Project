@@ -110,7 +110,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     ScrollablePage(
                       title: "Horários",
-                      texto: "",
+                      texto: "Segunda-Feira: 09:00 às 19:00 \nTerça-Feira: 09:00 às 19:00 \nQuarta-Feira: 09:00 às 19:00 \nQuinta-Feira: 09:00 às 19:00 \nSexta-Feira: 09:00 às 19:00 \nSegunda: 09:00 às 19:00 \nDomingo: Fechado \n",
                     )
                   ],
                 ),
